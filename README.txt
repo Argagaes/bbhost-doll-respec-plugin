@@ -1,0 +1,10 @@
+Doll Rebirth for original bbhost 0.2.35 (Bloodborne 1.09)
+
+Copy plugins/doll_rebirth.dll into the plugins folder next to bbhost.exe and restart bbhost. It is enabled by default; no other DLL, mod, custom bbhost build or altar option is needed. The Doll's menus gain "Rebirth in the Nightmare": confirm, then the plugin returns your hunter to the chosen origin's level and attributes and refunds the Blood Echoes spent on added attribute points. The level-up screen opens, followed by Accept Rebirth / Undo Rebirth. Undo restores your old build and held echoes; closing the choice reopens level-up. The Doll must normally be available to speak to.
+
+Back up your saves before testing: on Windows bbhost defaults to %LOCALAPPDATA%\bbhost\data\saves\SPRJ0005. This build has been tested against the actual 1.09 script and a simulated host for reset, refund, undo and echo-cap refusal, but not yet played in-game. If the refund would exceed the game's cap or character data cannot be verified, it refuses without changing stats. The current failure message is bbhost's existing altar text and may say "return to the altar"; ignore that wording and check bbhost's log.
+
+The plugin loads the Dream's talk archive through the host and checks the Doll script hash. It makes a plugin overlay each run; the game dump and saves are not modified by installation. Player mods replacing that archive take priority and may prevent the plugin from working. It uses the PC event text included in bbhost 0.2.35, and requires the standard 1.09 eboot. [plugins] signed_only = true blocks unsigned plugins. To uninstall, delete the DLL or turn it off in the Plugins tab and restart.
+
+Source and GPL-3.0-or-later license are included. Build with MSYS2 UCRT64 clang++ and static zlib, from source/:
+clang++ -std=c++17 -O2 -shared -static -static-libstdc++ -static-libgcc -I. -I<zlib-prefix>/include doll_rebirth.cpp doll_script.cpp engine/esd.cpp core/sha256.cpp gcn/container.cpp <zlib-prefix>/lib/libzlibstatic.a -o doll_rebirth.dll
