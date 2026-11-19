@@ -19,7 +19,8 @@ This version was tested against the 1.09 Doll dialogue and a simulated host cove
 The release DLL was built with Clang in MSYS2 UCRT64 and a static zlib 1.3.1 library. The exact zlib source archive used for the build is in `third_party/`. After extracting and building it as a static library, run from `source/` with the zlib build prefix substituted:
 
 ```sh
-clang++ -std=c++17 -O2 -shared -static -static-libstdc++ -static-libgcc \
+clang++ -std=c++17 -Os -ffunction-sections -fdata-sections -shared \
+  -static -static-libstdc++ -static-libgcc -Wl,--gc-sections -Wl,--strip-all \
   -I. -I<zlib-prefix>/include doll_rebirth.cpp doll_script.cpp \
   engine/esd.cpp core/sha256.cpp gcn/container.cpp \
   <zlib-prefix>/lib/libzlibstatic.a -o doll_rebirth.dll
