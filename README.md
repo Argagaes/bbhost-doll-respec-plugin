@@ -12,7 +12,7 @@ This plugin needs bbhost's normal decrypted 1.09 eboot. It does not require the 
 
 ## Status and limitations
 
-This version was tested against the 1.09 Doll dialogue and a simulated host covering reset, refund, undo, and rejection when the echo cap would be exceeded. **It has not yet been tested in-game.** On failure it reuses an existing bbhost message that can incorrectly mention the altar. A mod overriding the same Hunter's Dream talk archive can prevent the plugin from working. An unsigned plugin will not load if `[plugins] signed_only = true`.
+This version was tested against the 1.09 Doll dialogue and a simulated host covering reset, refund, undo, and rejection when the echo cap would be exceeded. On failure it reuses an existing bbhost message that can incorrectly mention the altar. A mod overriding the same Hunter's Dream talk archive can prevent the plugin from working. An unsigned plugin will not load if `[plugins] signed_only = true`.
 
 ## Building
 
